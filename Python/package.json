@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "chartjs-react": "^4.1.0",
+    "date-fns": "^2.29.3"
+  }
+}
