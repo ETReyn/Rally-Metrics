@@ -39,10 +39,3 @@ class HistoricalCategoryData:
         return completeIterationDict
 
 
-hcd = HistoricalCategoryData()
-data = hcd.getSpecificCategoryData(128415043608)
-
-test = True
-for d in data:
-    if test:
-        print(data[d])

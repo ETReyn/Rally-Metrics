@@ -7,10 +7,14 @@ class WorkBreakdown:
 
     def getWorkBreakdown(self, iterationId):
         iterationCompleteDAO = IterationCompleteDAO()
+        iteration = IterationDAO()
         iterationData = iterationCompleteDAO.selectIterationById(
             iterationId)
         workBreakdown = []
+        iterationName = iteration.selectIterationById(iterationData[0][0])
+        print(iterationName[0][1]);
         for work in iterationData:
+
             workBreakdown.append(
                 {
                     "iterationId": work[0],
@@ -24,6 +28,7 @@ class WorkBreakdown:
                     "five": work[7],
                     "eight": work[8],
                     "thirteen": work[9],
+                    "iterationName": iterationName[0][1]
                 })
         return workBreakdown
 

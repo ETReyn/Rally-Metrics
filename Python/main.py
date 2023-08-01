@@ -68,3 +68,8 @@ async def getHistoricWorkBreakdown():
 async def getHistoricWorkBreakdown(iterationId):
     iterationData = IterationData()
     return iterationData.getIteration(iterationId)
+
+@app.get("/iteration/recent")
+async def getHistoricWorkBreakdown(iterationId):
+    iterationData = IterationData()
+    return iterationData.getIteration(iterationId)

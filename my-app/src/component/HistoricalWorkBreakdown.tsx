@@ -10,7 +10,7 @@ import {
 } from 'chart.js';
 import { MouseEventHandler, useEffect, useState } from 'react';
 import { Line, Bar } from 'react-chartjs-2';
-import { handleBreakdown } from '../App';
+import { useNavigate } from 'react-router-dom';
 
 ChartJS.register(
     CategoryScale,
@@ -40,12 +40,11 @@ interface allGraphData {
     feature: number[],
     defect: number[],
     stabilization: number[],
-    setIterationId(val:string): void,
-    newData:handleData,
+    iterationId: string[]
 }
 
 export function HistoricalWorkBreakdown(d: allGraphData) {
-    console.log(d.iteration);
+    const navigate = useNavigate();
     const total = d.defect.map((x, index) => {
         return x + d.enhancements[index] + d.feature[index] + d.security[index] + d.stabilization[index];
     })
@@ -144,9 +143,8 @@ export function HistoricalWorkBreakdown(d: allGraphData) {
             //   data.datasets[0].data.splice(ind, 1);
             //   data.labels.splice(ind, 1);
             //   }
-            console.log(d.iteration[ind])
-            d.setIterationId(d.iteration[ind])
-            handleBreakdown(d.newData, d.iteration[ind])
+            console.log(d)
+            navigate(`/breakdown/${d.iterationId[ind]}`)
             }
         }
         }}  />;
